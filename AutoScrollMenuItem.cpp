@@ -13,25 +13,25 @@ void AutoScrollMenuItem::update(Menu& menu) {
 
 void AutoScrollMenuItem::scroll(Menu& menu) {
     int textLength = text.length();
-    int renderLength = textLength - index;
     int maxRenderLength = menu.cols;
 
     if (textLength <= maxRenderLength) {
         return;
     }
 
-    if (++index >= textLength) {
+    if (++index > textLength) {
         index = 0;
     }
 
-    render = text.substring(index);
+    int renderLength = textLength - index;
+    render = text.substring(index, min(index + maxRenderLength, textLength));
 
-    if (renderLength > maxRenderLength) {
-        render = render.substring(0, maxRenderLength);
-    }
-    else if (renderLength < maxRenderLength) {
+    if (renderLength < maxRenderLength) {
         render += " " + text.substring(0, maxRenderLength - renderLength);
     }
+
+    Serial.println(renderLength);
+    Serial.println(render);
 
     menu.draw();
 }
