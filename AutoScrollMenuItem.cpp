@@ -30,9 +30,6 @@ void AutoScrollMenuItem::scroll(Menu& menu) {
         render += " " + text.substring(0, maxRenderLength - renderLength);
     }
 
-    Serial.println(renderLength);
-    Serial.println(render);
-
     menu.draw();
 }
 
