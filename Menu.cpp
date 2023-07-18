@@ -2,22 +2,26 @@
 #include "RotaryEncoder.h"
 
 void Menu::draw() {
+    lcd.clear();
+    
+    for (int i = 0; i < menuItems.length; i++) {
+        menuItems[i]->draw(*this);
+    }
+}
+
+void Menu::update() {
     if (RotaryEncoder::update(*this)) {
         lastMillis = millis();
         lcd.on();
     }
 
-    if (millis() - lastMillis > 10000) {
+    if (autoTurnOff && millis() - lastMillis > 10000) {
         lastMillis = millis();
         lcd.off();
     }
 
-    delay(100);
-
-    lcd.clear();
-    
     for (int i = 0; i < menuItems.length; i++) {
-        menuItems[i]->draw(*this);
+        menuItems[i]->update(*this);
     }
 }
 

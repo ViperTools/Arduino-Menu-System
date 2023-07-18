@@ -5,5 +5,6 @@
 #pragma once
 #include "Menu.h"
 #include "RotaryEncoder.h"
-#include "MenuFloatValue.h"
-#include "MenuList.h"
+#include "FloatValueMenu.h"
+#include "ListMenu.h"
+#include "AutoScrollMenuItem.h"

@@ -53,14 +53,14 @@ namespace RotaryEncoder
     // Updates the rotary encoder, returns whether there was an action or not
     bool update(Menu& menu) {
         if (oldEncoderPosition != encoderPosition) {
+            oldEncoderPosition = encoderPosition;
+
             if (direction) {
                 menu.up();
             }
             else {
                 menu.down();
             }
-
-            oldEncoderPosition = encoderPosition;
 
             return true;
         }

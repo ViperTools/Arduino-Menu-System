@@ -1,17 +1,18 @@
 #pragma once
 #include "Menu.h"
 
-struct MenuListItem {
+struct ListMenuItem {
     const char* text;
     virtual void clicked(Menu& menu) {};
 
-    MenuListItem(const char* text)
+    ListMenuItem();
+    ListMenuItem(const char* text)
         : text(text)
     {};
 };
 
-struct MenuList : public MenuItem {
-    ItemsList<MenuListItem*> listItems = ItemsList<MenuListItem*>(MAX_MENU_ITEMS);
+struct ListMenu : public MenuItem {
+    ItemsList<ListMenuItem*> listItems = ItemsList<ListMenuItem*>(MAX_MENU_ITEMS);
     int selectedIndex = 0;
 
     void nextItem();
@@ -24,13 +25,13 @@ struct MenuList : public MenuItem {
 };
 
 template<typename T>
-struct MenuRedirectListItem : MenuListItem {
-    using MenuListItem::MenuListItem;
+struct RedirectMenuListItem : ListMenuItem {
+    using ListMenuItem::ListMenuItem;
 
     void clicked(Menu& menu) override;
 };
 
 template<typename T>
-void MenuRedirectListItem<T>::clicked(Menu& menu) {
+void RedirectMenuListItem<T>::clicked(Menu& menu) {
     menu.loadMenuItem(new T());
 }

@@ -1,7 +1,7 @@
 #pragma once
 #include "Menu.h"
 
-struct MenuFloatValue : public MenuItem {
+struct FloatValueMenu : public MenuItem {
     const char* title;
     float increment;
     float value, minValue, maxValue;
@@ -12,7 +12,7 @@ struct MenuFloatValue : public MenuItem {
     void up(Menu& menu) override;
     void down(Menu& menu) override;
 
-    MenuFloatValue(const char* title, float minValue, float maxValue, float value, float increment)
+    FloatValueMenu(const char* title, float minValue, float maxValue, float value, float increment)
         : title(title),
         minValue(minValue),
         maxValue(maxValue),
@@ -20,7 +20,7 @@ struct MenuFloatValue : public MenuItem {
         increment(increment)
     {};
 
-    MenuFloatValue(const char* title, float minValue, float maxValue)
-        : MenuFloatValue(title, minValue, maxValue, minValue, 0.1)
+    FloatValueMenu(const char* title, float minValue, float maxValue)
+        : FloatValueMenu(title, minValue, maxValue, minValue, 0.1)
     {};
 };

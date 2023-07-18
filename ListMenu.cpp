@@ -1,8 +1,8 @@
-#include "MenuList.h"
+#include "ListMenu.h"
 
 static constexpr int TEXT_OFFSET = 2;
 
-void MenuList::draw(Menu& menu) const {
+void ListMenu::draw(Menu& menu) const {
     int start = max(0, selectedIndex - menu.rows + 1);
     int end = min(listItems.length, start + menu.rows);
 
@@ -19,26 +19,26 @@ void MenuList::draw(Menu& menu) const {
     }
 }
 
-void MenuList::nextItem() {
+void ListMenu::nextItem() {
     if (++selectedIndex == listItems.length) {
         selectedIndex = 0;
     }
 }
 
-void MenuList::previousItem() {
+void ListMenu::previousItem() {
     if (--selectedIndex == -1) {
         selectedIndex = listItems.length - 1;
     }
 }
 
-void MenuList::clicked(Menu& menu) {
+void ListMenu::clicked(Menu& menu) {
     listItems[selectedIndex]->clicked(menu);
 }
 
-void MenuList::up(Menu& menu) {
+void ListMenu::up(Menu& menu) {
     previousItem();
 }
 
-void MenuList::down(Menu& menu) {
+void ListMenu::down(Menu& menu) {
     nextItem();
 }

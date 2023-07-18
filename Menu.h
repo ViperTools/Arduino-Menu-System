@@ -10,6 +10,7 @@ struct Menu;
 
 struct MenuItem {
     virtual void draw(Menu& menu) const = 0;
+    virtual void update(Menu& menu) {};
     virtual void up(Menu& menu) {};
     virtual void down(Menu& menu) {};
     virtual void clicked(Menu& menu) {};
@@ -21,9 +22,10 @@ public:
     int numItems = 0;
     const int rows, cols;
     hd44780_I2Cexp lcd;
-    unsigned long lastMillis = 0;
+    bool autoTurnOff = true;
     
     void draw();
+    void update();
     void printCenter(int row, const char* text);
     void loadMenuItem(MenuItem* item);
 
@@ -39,4 +41,7 @@ public:
         lcd.init();
         lcd.clear();
     };
+
+private:
+    unsigned long lastMillis = 0;
 };

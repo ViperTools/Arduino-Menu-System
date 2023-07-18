@@ -1,14 +1,14 @@
-#include "MenuFloatValue.h"
+#include "FloatValueMenu.h"
 
-void MenuFloatValue::draw(Menu& menu) const {
+void FloatValueMenu::draw(Menu& menu) const {
     menu.printCenter(0, title);
     menu.printCenter(menu.rows / 2, String(value).c_str());
 }
 
-void MenuFloatValue::clicked(Menu& menu) {
+void FloatValueMenu::clicked(Menu& menu) {
 }
 
-void MenuFloatValue::up(Menu& menu) {
+void FloatValueMenu::up(Menu& menu) {
     if (disabled) return;
 
     value -= increment;
@@ -18,7 +18,7 @@ void MenuFloatValue::up(Menu& menu) {
     }
 }
 
-void MenuFloatValue::down(Menu& menu) {
+void FloatValueMenu::down(Menu& menu) {
     if (disabled) return;
 
     value += increment;
