@@ -37,6 +37,6 @@ void AutoScrollMenuItem::scroll(Menu& menu) {
 }
 
 void AutoScrollMenuItem::setText(String text) {
-    this->text = text;
+    this->text = this->render = text;
     index = 0;
 }
