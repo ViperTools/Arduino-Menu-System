@@ -22,7 +22,7 @@ public:
     int numItems = 0;
     const int rows, cols;
     hd44780_I2Cexp lcd;
-    bool autoTurnOff = true;
+    unsigned long autoTurnOffDelay = 5000;
     
     void draw();
     void update();
@@ -43,5 +43,5 @@ public:
     };
 
 private:
-    unsigned long lastMillis = 0;
+    unsigned long lastMillis = millis();
 };

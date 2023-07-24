@@ -15,7 +15,7 @@ void Menu::update() {
         lcd.on();
     }
 
-    if (autoTurnOff && millis() - lastMillis > 10000) {
+    if (autoTurnOffDelay && millis() - lastMillis >= autoTurnOffDelay) {
         lastMillis = millis();
         lcd.off();
     }
